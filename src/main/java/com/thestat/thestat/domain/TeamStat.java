@@ -1,14 +1,49 @@
 package com.thestat.thestat.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+
+import javax.persistence.*;
 
 @Entity
+@Getter
 public class TeamStat
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "team_stat_id")
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private Team team;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "match_id")
+    private Match match;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tournament_id")
+    private Tournament tournament;
+
+    private int twoPointMade;
+
+    private int threePointMade;
+
+    private int freeThrowMade;
+
+    private int assist;
+
+    private int steal;
+
+    private int block;
+
+    private int rebound;
+
+    private int win;
+
+    private int lose;
+
+    private int gamesPlayed;
+
+    private int totalPointMade;
 }
