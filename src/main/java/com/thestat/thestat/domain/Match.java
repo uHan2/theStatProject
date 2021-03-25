@@ -13,13 +13,13 @@ public class Match
     @Column(name = "match_id")
     private Long id;
 
-    private String teamAName;
+    private String firstTeamName;
 
-    private String teamBName;
+    private String secondTeamName;
 
-    private int teamAScore;
+    private int firstTeamScore;
 
-    private int teamBScore;
+    private int secondTeamScore;
 
     //toDo :: consider enum type
     private String status;
