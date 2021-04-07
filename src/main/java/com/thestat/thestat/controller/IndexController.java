@@ -1,11 +1,20 @@
 package com.thestat.thestat.controller;
 
+import com.thestat.thestat.domain.TeamStat;
+import com.thestat.thestat.service.TeamStatService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
+@RequiredArgsConstructor
 public class IndexController
 {
+    private final TeamStatService teamStatService;
+
     @GetMapping("/")
     public String root()
     {
@@ -37,8 +46,13 @@ public class IndexController
     }
 
     @GetMapping("/league-ranking-team")
-    public String leagueRankingTeam()
+    public String leagueRankingTeam(Model model)
     {
+        List<TeamStat> list = teamStatService.findTeatStats();
+
+        model.addAttribute("lists", list);
+        model.addAttribute("listCount", list.size());
+
         return "league-ranking-team";
     }
 
