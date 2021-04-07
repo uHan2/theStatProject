@@ -18,16 +18,34 @@ public class IndexController
         return "about";
     }
 
-    @GetMapping("/services")
-    public String services()
+    @GetMapping("/basketball")
+    public String basketball()
     {
-        return "services";
+        return "basketball";
     }
 
     @GetMapping("/contact")
     public String contact()
     {
         return "contact";
+    }
+
+    @GetMapping("/league-schedule")
+    public String leagueSchedule()
+    {
+        return "league-schedule";
+    }
+
+    @GetMapping("/league-ranking-team")
+    public String leagueRankingTeam()
+    {
+        return "league-ranking-team";
+    }
+
+    @GetMapping("/league-ranking-player")
+    public String leagueRankingPlayer()
+    {
+        return "league-ranking-player";
     }
 
     @GetMapping("/404")
