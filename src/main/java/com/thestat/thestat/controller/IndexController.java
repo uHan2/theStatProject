@@ -1,6 +1,8 @@
 package com.thestat.thestat.controller;
 
+import com.thestat.thestat.domain.PlayerStat;
 import com.thestat.thestat.domain.TeamStat;
+import com.thestat.thestat.service.PlayerStatService;
 import com.thestat.thestat.service.TeamStatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import java.util.List;
 public class IndexController
 {
     private final TeamStatService teamStatService;
+    private final PlayerStatService playerStatService;
 
     @GetMapping("/")
     public String root()
@@ -39,13 +42,13 @@ public class IndexController
         return "contact";
     }
 
-    @GetMapping("/league-schedule")
+    @GetMapping("/basketball-league-schedule")
     public String leagueSchedule()
     {
-        return "league-schedule";
+        return "basketball-league-schedule";
     }
 
-    @GetMapping("/league-ranking-team")
+    @GetMapping("/basketball-league-ranking-team")
     public String leagueRankingTeam(Model model)
     {
         List<TeamStat> list = teamStatService.findTeatStats();
@@ -53,13 +56,18 @@ public class IndexController
         model.addAttribute("lists", list);
         model.addAttribute("listCount", list.size());
 
-        return "league-ranking-team";
+        return "basketball-league-ranking-team";
     }
 
-    @GetMapping("/league-ranking-player")
-    public String leagueRankingPlayer()
+    @GetMapping("/basketball-league-ranking-player")
+    public String leagueRankingPlayer(Model model)
     {
-        return "league-ranking-player";
+        List<PlayerStat> list = playerStatService.finePlayerStats();
+
+        model.addAttribute("lists", list);
+        model.addAttribute("listCount", list.size());
+
+        return "basketball-league-ranking-player";
     }
 
     @GetMapping("/404")
