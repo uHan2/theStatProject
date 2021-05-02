@@ -18,12 +18,6 @@ public class IndexController
         return "about";
     }
 
-    @GetMapping("/services")
-    public String services()
-    {
-        return "services";
-    }
-
     @GetMapping("/contact")
     public String contact()
     {

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">농구
+        <small>경기일정 및 결과</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="basketball">Basketball</a>
+        </li>
+        <li class="breadcrumb-item active">경기일정 및 결과</li>
+    </ol>
+
+    <nav class="navbar-brand">
+        <ul style="list-style: none">
+            <li style="float:left" class="nav-item">
+                <a class="nav-link" href="basketball-league-schedule">경기일정 및 결과</a>
+            </li>
+            <li style="float:left" class="nav-item">
+                <a class="nav-link" href="basketball-league-ranking-team">팀기록</a>
+            </li>
+            <li style="float:left" class="nav-item">
+                <a class="nav-link" href="basketball-league-ranking-player">개인기록</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Image Header -->
+    <img class="img-fluid rounded mb-4" src="/img/basketball_stat_img1.jpg" alt="">
+
+    <!-- Marketing Icons Section -->
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">Card Title</h4>
+                <div class="card-body">
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
+                        necessitatibus neque.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">Card Title</h4>
+                <div class="card-body">
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos,
+                        nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque
+                        exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">Card Title</h4>
+                <div class="card-body">
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
+                        necessitatibus neque.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

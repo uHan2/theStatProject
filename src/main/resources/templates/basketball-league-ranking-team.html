@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">농구
+        <small>팀기록</small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="basketball">Basketball</a>
+        </li>
+        <li class="breadcrumb-item active">팀기록</li>
+    </ol>
+
+    <nav class="navbar-brand">
+        <ul style="list-style: none">
+            <li style="float:left" class="nav-item">
+                <a class="nav-link" href="basketball-league-schedule">경기일정 및 결과</a>
+            </li>
+            <li style="float:left" class="nav-item">
+                <a class="nav-link" href="basketball-league-ranking-team">팀기록</a>
+            </li>
+            <li style="float:left" class="nav-item">
+                <a class="nav-link" href="basketball-league-ranking-player">개인기록</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Image Header -->
+    <img class="img-fluid rounded mb-4" src="/img/basketball_stat_img2.jpg" alt="">
+
+    <!-- Marketing Icons Section -->
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>팀명</th>
+                <th>순위</th>
+                <th>경기수</th>
+                <th>승</th>
+                <th>패</th>
+                <th>총득점</th>
+                <th>리바운드</th>
+                <th>스틸</th>
+                <th>블록</th>
+                <th>2점슛</th>
+                <th>3점슛</th>
+                <th>자유투</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="list, iterator : ${lists}">
+                <td th:text="${list.team.name}"></td>
+                <td th:text="${iterator.index} + 1"></td>
+                <td th:text="${list.gamesPlayed}"></td>
+                <td th:text="${list.win}"></td>
+                <td th:text="${list.lose}"></td>
+                <td th:text="${list.totalPointMade}"></td>
+                <td th:text="${list.rebound}"></td>
+                <td th:text="${list.steal}"></td>
+                <td th:text="${list.block}"></td>
+                <td th:text="${list.twoPointMade}"></td>
+                <td th:text="${list.threePointMade}"></td>
+                <td th:text="${list.freeThrowMade}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.row -->
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

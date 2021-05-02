@@ -1,8 +1,11 @@
 package com.thestat.thestat.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
 public class PlayerStat
 {
     @Id
@@ -24,9 +27,15 @@ public class PlayerStat
 
     private int twoPointMade;
 
+    private double twoPointTry;
+
     private int threePointMade;
 
+    private double threePointTry;
+
     private int freeThrowMade;
+
+    private double freeThrowTry;
 
     private int assist;
 
@@ -35,6 +44,8 @@ public class PlayerStat
     private int block;
 
     private int rebound;
+
+    private double gamesPlayed;
 
     private int totalPointMade;
 }
