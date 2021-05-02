@@ -47,15 +47,13 @@
                 <th>선수명</th>
                 <th>순위</th>
                 <th>경기수</th>
-                <th>승</th>
-                <th>패</th>
-                <th>총득점</th>
+                <th>득점 평균</th>
                 <th>리바운드</th>
                 <th>스틸</th>
                 <th>블록</th>
-                <th>2점슛</th>
-                <th>3점슛</th>
-                <th>자유투</th>
+                <th>2점슛 평균</th>
+                <th>3점슛 평균</th>
+                <th>자유투 평균</th>
             </tr>
             </thead>
             <tbody>
@@ -63,15 +61,13 @@
                 <td th:text="${list.player.name}"></td>
                 <td th:text="${iterator.index} + 1"></td>
                 <td th:text="${list.gamesPlayed}"></td>
-                <td th:text="${list.win}"></td>
-                <td th:text="${list.lose}"></td>
-                <td th:text="${list.totalPointMade}"></td>
+                <td th:text="${#numbers.formatDecimal((list.totalPointMade / list.gamesPlayed), 1, 2)}"></td>
                 <td th:text="${list.rebound}"></td>
                 <td th:text="${list.steal}"></td>
                 <td th:text="${list.block}"></td>
-                <td th:text="${list.twoPointMade}"></td>
-                <td th:text="${list.threePointMade}"></td>
-                <td th:text="${list.freeThrowMade}"></td>
+                <td th:text="${#numbers.formatDecimal((list.twoPointMade / list.gamesPlayed), 1, 2)}"></td>
+                <td th:text="${#numbers.formatDecimal((list.threePointMade / list.gamesPlayed), 1, 2)}"></td>
+                <td th:text="${#numbers.formatDecimal((list.freeThrowMade / list.gamesPlayed), 1, 2)}"></td>
             </tr>
             </tbody>
         </table>

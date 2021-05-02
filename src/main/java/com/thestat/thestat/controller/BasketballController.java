@@ -44,10 +44,12 @@ public class BasketballController
     @GetMapping("/basketball-league-ranking-player")
     public String leagueRankingPlayer(Model model)
     {
-        List<PlayerStat> list = playerStatService.finePlayerStats();
+        List<PlayerStat> list = playerStatService.findPlayerStats();
+
 
         model.addAttribute("lists", list);
         model.addAttribute("listCount", list.size());
+
 
         return "basketball-league-ranking-player";
     }

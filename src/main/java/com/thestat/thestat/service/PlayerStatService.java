@@ -13,7 +13,7 @@ public class PlayerStatService
 {
     private final PlayerStatRepository playerStatRepository;
 
-    public List<PlayerStat> finePlayerStats()
+    public List<PlayerStat> findPlayerStats()
     {
         return playerStatRepository.findAll();
     }

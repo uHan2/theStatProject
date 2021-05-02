@@ -27,9 +27,15 @@ public class TeamStat
 
     private int twoPointMade;
 
+    private double twoPointTry;
+
     private int threePointMade;
 
+    private double threePointTry;
+
     private int freeThrowMade;
+
+    private double freeThrowTry;
 
     private int assist;
 
