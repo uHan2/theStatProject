@@ -45,7 +45,7 @@ public class PlayerStat
 
     private int rebound;
 
-    private double gamesPlayed;
+    private int gamesPlayed;
 
     private int totalPointMade;
 }

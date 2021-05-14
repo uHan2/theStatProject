@@ -1,7 +1,9 @@
 package com.thestat.thestat.controller;
 
 import com.thestat.thestat.domain.PlayerStat;
+import com.thestat.thestat.domain.TeamMatch;
 import com.thestat.thestat.domain.TeamStat;
+import com.thestat.thestat.service.TeamMatchService;
 import com.thestat.thestat.service.PlayerStatService;
 import com.thestat.thestat.service.TeamStatService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ public class BasketballController
 {
     private final TeamStatService teamStatService;
     private final PlayerStatService playerStatService;
+    private final TeamMatchService teamMatchService;
 
     @GetMapping("/basketball")
     public String basketball()
@@ -25,8 +28,12 @@ public class BasketballController
     }
 
     @GetMapping("/basketball-league-schedule")
-    public String leagueSchedule()
+    public String leagueSchedule(Model model)
     {
+        List<TeamMatch> list = teamMatchService.findTeamMatches();
+
+        model.addAttribute("lists", list);
+
         return "basketball-league-schedule";
     }
 
@@ -45,6 +52,7 @@ public class BasketballController
     public String leagueRankingPlayer(Model model)
     {
         List<PlayerStat> list = playerStatService.findPlayerStats();
+        System.out.println(list.iterator().next().getGamesPlayed());
 
 
         model.addAttribute("lists", list);
