@@ -3,6 +3,7 @@ package com.thestat.thestat.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.Year;
 
 @Entity
@@ -18,5 +19,5 @@ public class Tournament
 
     private String hostUniversity;
 
-    private Year year;
+    private int year;
 }

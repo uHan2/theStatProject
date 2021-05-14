@@ -47,6 +47,7 @@
                 <th>팀명</th>
                 <th>순위</th>
                 <th>경기수</th>
+                <th>승률</th>
                 <th>승</th>
                 <th>패</th>
                 <th>총득점</th>
@@ -63,15 +64,16 @@
                 <td th:text="${list.team.name}"></td>
                 <td th:text="${iterator.index} + 1"></td>
                 <td th:text="${list.gamesPlayed}"></td>
+                <td th:text="${#numbers.formatDecimal((list.win * 1.0 / (list.win + list.lose)), 1, 3)}"></td>
                 <td th:text="${list.win}"></td>
                 <td th:text="${list.lose}"></td>
-                <td th:text="${list.totalPointMade}"></td>
-                <td th:text="${list.rebound}"></td>
-                <td th:text="${list.steal}"></td>
-                <td th:text="${list.block}"></td>
-                <td th:text="${list.twoPointMade}"></td>
-                <td th:text="${list.threePointMade}"></td>
-                <td th:text="${list.freeThrowMade}"></td>
+                <td th:text="${#numbers.formatDecimal((list.totalPointMade * 1.0 / list.gamesPlayed), 1, 2)}"></td>
+                <td th:text="${#numbers.formatDecimal((list.rebound * 1.0 / list.gamesPlayed), 1, 2)}"></td>
+                <td th:text="${#numbers.formatDecimal((list.steal * 1.0 / list.gamesPlayed), 1, 2)}"></td>
+                <td th:text="${#numbers.formatDecimal((list.block * 1.0 / list.gamesPlayed), 1, 2)}"></td>
+                <td th:text="${#numbers.formatPercent((list.twoPointMade / list.twoPointTry) / list.gamesPlayed, 1, 2)}"></td>
+                <td th:text="${#numbers.formatPercent((list.threePointMade / list.threePointTry), 1, 2)}"></td>
+                <td th:text="${#numbers.formatPercent((list.freeThrowMade / list.freeThrowTry), 1, 2)}"></td>
             </tr>
             </tbody>
         </table>

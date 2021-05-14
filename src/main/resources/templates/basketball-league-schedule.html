@@ -40,44 +40,33 @@
     <img class="img-fluid rounded mb-4" src="/img/basketball_stat_img1.jpg" alt="">
 
     <!-- Marketing Icons Section -->
-    <div class="row">
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <h4 class="card-header">Card Title</h4>
-                <div class="card-body">
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                        necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <h4 class="card-header">Card Title</h4>
-                <div class="card-body">
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos,
-                        nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque
-                        exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <h4 class="card-header">Card Title</h4>
-                <div class="card-body">
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                        necessitatibus neque.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
-        </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>대회명</th>
+                <th>날짜</th>
+                <th>시간</th>
+                <th>팀 A</th>
+                <th></th>
+                <th>팀 B</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="list : ${lists}">
+                <td th:text="${list.match.tournament.name}"></td>
+                <td th:text="${list.date} + ' (' + ${#calendars.dayOfWeekName(list.date)} + ') '"></td>
+                <td th:text="${#dates.format(list.time, 'HH:mm')}"></td>
+                <td th:text="${list.match.firstTeamName}"></td>
+                <!-- todo 조건문으로 종료면 점수 나타내기-->
+                <td th:if="${list.match.status} == '종료'" th:text="${list.match.firstTeamScore} + ' : ' + ${list.match.secondTeamScore}"></td>
+                <td th:if="${list.match.status} == '진행중'" th:text="vs"></td>
+
+                <td th:text="${list.match.secondTeamName}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <!-- /.row -->
 
