@@ -1,15 +1,14 @@
 package com.thestat.thestat.controller;
 
-import com.thestat.thestat.domain.PlayerStat;
-import com.thestat.thestat.domain.TeamMatch;
-import com.thestat.thestat.domain.TeamStat;
-import com.thestat.thestat.service.TeamMatchService;
+import com.thestat.thestat.domain.*;
 import com.thestat.thestat.service.PlayerStatService;
+import com.thestat.thestat.service.TeamMatchService;
 import com.thestat.thestat.service.TeamStatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
@@ -28,9 +27,9 @@ public class BasketballController
     }
 
     @GetMapping("/basketball-league-schedule")
-    public String leagueSchedule(Model model)
+    public String leagueSchedule(@ModelAttribute("teamMatchSearch") TeamMatchSearch teamMatchSearch, Model model)
     {
-        List<TeamMatch> list = teamMatchService.findTeamMatches();
+        List<TeamMatch> list = teamMatchService.findTeamMatchSearch(teamMatchSearch);
 
         model.addAttribute("lists", list);
 
@@ -38,26 +37,21 @@ public class BasketballController
     }
 
     @GetMapping("/basketball-league-ranking-team")
-    public String leagueRankingTeam(Model model)
+    public String leagueRankingTeam(@ModelAttribute("teamStatSearch") TeamStatSearch teamStatSearch, Model model)
     {
-        List<TeamStat> list = teamStatService.findTeatStats();
+        List<TeamStat> list = teamStatService.findTeamStatSearch(teamStatSearch);
 
         model.addAttribute("lists", list);
-        model.addAttribute("listCount", list.size());
 
         return "basketball-league-ranking-team";
     }
 
     @GetMapping("/basketball-league-ranking-player")
-    public String leagueRankingPlayer(Model model)
+    public String leagueRankingPlayer(@ModelAttribute("playerStatSearch") PlayerStatSearch playerStatSearch, Model model)
     {
-        List<PlayerStat> list = playerStatService.findPlayerStats();
-        System.out.println(list.iterator().next().getGamesPlayed());
-
+        List<PlayerStat> list = playerStatService.findPlayerStatSearch(playerStatSearch);
 
         model.addAttribute("lists", list);
-        model.addAttribute("listCount", list.size());
-
 
         return "basketball-league-ranking-player";
     }
