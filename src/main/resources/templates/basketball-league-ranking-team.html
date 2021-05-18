@@ -39,13 +39,36 @@
     <!-- Image Header -->
     <img class="img-fluid rounded mb-4" src="/img/basketball_stat_img2.jpg" alt="">
 
-    <!-- Marketing Icons Section -->
+    <!-- Search Section -->
+    <div>
+        <form th:object="${teamStatSearch}" class="form-inline">
+            <div class="form-group mx-sm-1 mb-2">
+                <select th:field="*{year}" class="form-control">
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                </select>
+            </div>
+            <div class="form-group mx-sm-1 mb-2">
+                <select th:field="*{tournamentName}" class="form-control">
+                    <option value="임시대회A">임시대회A</option>
+                    <option value="임시대회B">임시대회B</option>
+                    <option value="임시대회C">임시대회C</option>
+                </select>
+            </div>
+            <div class="form-group mb-2">
+                <input type="text" th:field="*{teamName}" class="formcontrol" placeholder="팀 이름"/>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">검색</button>
+        </form>
+    </div>
+
+    <!-- Table Section -->
     <div>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>팀명</th>
-                <th>순위</th>
                 <th>경기수</th>
                 <th>승률</th>
                 <th>승</th>
@@ -62,7 +85,6 @@
             <tbody>
             <tr th:each="list, iterator : ${lists}">
                 <td th:text="${list.team.name}"></td>
-                <td th:text="${iterator.index} + 1"></td>
                 <td th:text="${list.gamesPlayed}"></td>
                 <td th:text="${#numbers.formatDecimal((list.win * 1.0 / (list.win + list.lose)), 1, 3)}"></td>
                 <td th:text="${list.win}"></td>
