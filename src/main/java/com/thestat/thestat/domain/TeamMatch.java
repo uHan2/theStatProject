@@ -3,8 +3,8 @@ package com.thestat.thestat.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.sql.Date;
+import java.sql.Time;
 
 @Entity
 @Getter

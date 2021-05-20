@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface TeamMatchRepository extends JpaRepository<TeamMatch, Long>, QuerydslPredicateExecutor<TeamMatch>
 {
-//    @Query("SELECT DISTINCT tm FROM TeamMatch tm JOIN tm.match m JOIN m.tournament")
-//    List<TeamMatch> findAllByMatch(Predicate search);
+    @Query("SELECT DISTINCT tm FROM TeamMatch tm JOIN FETCH tm.match m JOIN FETCH m.tournament")
+    List<TeamMatch> findAll(Predicate search);
 }
