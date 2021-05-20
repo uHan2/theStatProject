@@ -17,7 +17,7 @@ public class PlayerStatService
 
     public List<PlayerStat> findPlayerStatSearch(PlayerStatSearch playerStatSearch)
     {
-        return (List<PlayerStat>) playerStatRepository.findAll(
+        return playerStatRepository.findAll(
                 PlayerStatPredicate.search(playerStatSearch.getPlayerName(), playerStatSearch.getTeamName(),
                         playerStatSearch.getTournamentName(), playerStatSearch.getYear()));
     }
