@@ -80,14 +80,15 @@
             </thead>
             <tbody>
             <tr th:each="list : ${lists}">
-                <td th:text="${list.match.tournament.name}"></td>
+                <td th:text="${list.getTournamentName()}"></td>
                 <td th:text="${list.date} + ' (' + ${#calendars.dayOfWeekName(list.date)} + ') '"></td>
                 <td th:text="${#dates.format(list.time, 'HH:mm')}"></td>
-                <td th:text="${list.match.firstTeamName}"></td>
-                <td th:if="${list.match.status} == '종료'" th:text="${list.match.firstTeamScore} + ' : ' + ${list.match.secondTeamScore}"></td>
-                <td th:if="${list.match.status} == '진행중'" th:text="vs"></td>
+                <td th:text="${list.firstTeamName}"></td>
 
-                <td th:text="${list.match.secondTeamName}"></td>
+                <td th:if="${list.status} == '종료'" th:text="${list.firstTeamScore} + ' : ' + ${list.secondTeamScore}"></td>
+                <td th:if="${list.status} == '진행중'" th:text="vs"></td>
+
+                <td th:text="${list.secondTeamName}"></td>
             </tr>
             </tbody>
         </table>
