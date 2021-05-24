@@ -1,9 +1,8 @@
 package com.thestat.thestat.service;
 
 import com.thestat.thestat.domain.TeamStat;
-import com.thestat.thestat.domain.TeamStatPredicate;
 import com.thestat.thestat.domain.TeamStatSearch;
-import com.thestat.thestat.repository.TeamStatRepository;
+import com.thestat.thestat.repository.teamstat.TeamStatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +16,7 @@ public class TeamStatService
 
     public List<TeamStat> findTeamStatSearch(TeamStatSearch teamStatSearch)
     {
-        return teamStatRepository.findAll(
-                TeamStatPredicate.search(teamStatSearch.getTeamName(),
-                        teamStatSearch.getTournamentName(), teamStatSearch.getYear()));
+        return teamStatRepository.findAllTeamStatSearch(teamStatSearch);
     }
 
 }

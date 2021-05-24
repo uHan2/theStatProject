@@ -1,9 +1,8 @@
 package com.thestat.thestat.service;
 
-import com.thestat.thestat.domain.PlayerStat;
-import com.thestat.thestat.domain.PlayerStatPredicate;
 import com.thestat.thestat.domain.PlayerStatSearch;
-import com.thestat.thestat.repository.PlayerStatRepository;
+import com.thestat.thestat.domain.dto.PlayerStatDto;
+import com.thestat.thestat.repository.playerstat.PlayerStatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +14,8 @@ public class PlayerStatService
 {
     private final PlayerStatRepository playerStatRepository;
 
-    public List<PlayerStat> findPlayerStatSearch(PlayerStatSearch playerStatSearch)
+    public List<PlayerStatDto> findPlayerStatSearch(PlayerStatSearch playerStatSearch)
     {
-        return playerStatRepository.findAll(
-                PlayerStatPredicate.search(playerStatSearch.getPlayerName(), playerStatSearch.getTeamName(),
-                        playerStatSearch.getTournamentName(), playerStatSearch.getYear()));
+        return playerStatRepository.findAllPlayerStatSearch(playerStatSearch);
     }
 }

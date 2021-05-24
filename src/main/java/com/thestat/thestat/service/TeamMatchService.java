@@ -1,9 +1,8 @@
 package com.thestat.thestat.service;
 
-import com.thestat.thestat.domain.TeamMatch;
-import com.thestat.thestat.domain.TeamMatchPredicate;
 import com.thestat.thestat.domain.TeamMatchSearch;
-import com.thestat.thestat.repository.TeamMatchRepository;
+import com.thestat.thestat.domain.dto.TeamMatchDto;
+import com.thestat.thestat.repository.teammatch.TeamMatchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +14,8 @@ public class TeamMatchService
 {
     private final TeamMatchRepository teamMatchRepository;
 
-    public List<TeamMatch> findTeamMatchSearch(TeamMatchSearch teamMatchSearch)
+    public List<TeamMatchDto> findTeamMatchSearch(TeamMatchSearch teamMatchSearch)
     {
-        return teamMatchRepository.findAll(TeamMatchPredicate.search(teamMatchSearch.getTeamName(),
-                teamMatchSearch.getTournamentName(), teamMatchSearch.getYear()));
+        return teamMatchRepository.findAllTeamMatchSearch(teamMatchSearch);
     }
 }

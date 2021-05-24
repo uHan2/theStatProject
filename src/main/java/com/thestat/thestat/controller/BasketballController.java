@@ -1,6 +1,11 @@
 package com.thestat.thestat.controller;
 
-import com.thestat.thestat.domain.*;
+import com.thestat.thestat.domain.PlayerStatSearch;
+import com.thestat.thestat.domain.TeamMatchSearch;
+import com.thestat.thestat.domain.TeamStat;
+import com.thestat.thestat.domain.TeamStatSearch;
+import com.thestat.thestat.domain.dto.PlayerStatDto;
+import com.thestat.thestat.domain.dto.TeamMatchDto;
 import com.thestat.thestat.service.PlayerStatService;
 import com.thestat.thestat.service.TeamMatchService;
 import com.thestat.thestat.service.TeamStatService;
@@ -29,7 +34,7 @@ public class BasketballController
     @GetMapping("/basketball-league-schedule")
     public String leagueSchedule(@ModelAttribute("teamMatchSearch") TeamMatchSearch teamMatchSearch, Model model)
     {
-        List<TeamMatch> list = teamMatchService.findTeamMatchSearch(teamMatchSearch);
+        List<TeamMatchDto> list = teamMatchService.findTeamMatchSearch(teamMatchSearch);
 
         model.addAttribute("lists", list);
 
@@ -49,7 +54,7 @@ public class BasketballController
     @GetMapping("/basketball-league-ranking-player")
     public String leagueRankingPlayer(@ModelAttribute("playerStatSearch") PlayerStatSearch playerStatSearch, Model model)
     {
-        List<PlayerStat> list = playerStatService.findPlayerStatSearch(playerStatSearch);
+        List<PlayerStatDto> list = playerStatService.findPlayerStatSearch(playerStatSearch);
 
         model.addAttribute("lists", list);
 
