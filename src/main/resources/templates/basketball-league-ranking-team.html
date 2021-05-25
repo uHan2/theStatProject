@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header"></head>
+<head th:replace="fragments/header :: header">
+</head>
 
 <body>
 <div th:replace="fragments/bodyHeader :: bodyHeader"></div>
@@ -56,16 +57,22 @@
                     <option value="임시대회C">임시대회C</option>
                 </select>
             </div>
-            <div class="form-group mb-2">
+            <div class="form-group mx-sm-1 mb-2">
                 <input type="text" th:field="*{teamName}" class="formcontrol" placeholder="팀 이름"/>
             </div>
-            <button type="submit" class="btn btn-primary mb-2">검색</button>
+            <button type="submit" class="btn btn-primary mx-sm-1 mb-2">검색</button>
         </form>
     </div>
 
     <!-- Table Section -->
     <div>
-        <table class="table table-striped">
+        <style>
+            table {
+                white-space: nowrap;
+                text-align: center;
+            }
+        </style>
+        <table class="table table-responsive-sm table-bordered table-dark">
             <thead>
             <tr>
                 <th>팀명</th>
