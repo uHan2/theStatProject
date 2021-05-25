@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header"></head>
+<head th:replace="fragments/header :: header">
+</head>
 
 <body>
 <div th:replace="fragments/bodyHeader :: bodyHeader"></div>
@@ -57,36 +58,43 @@
                         <option value="임시대회C">임시대회C</option>
                     </select>
                 </div>
-            <div class="form-group mb-2">
-                <input type="text" th:field="*{teamName}" class="formcontrol" placeholder="팀 이름"/>
+                <div class="form-group mx-sm-1 mb-2">
+                    <input type="text" th:field="*{teamName}" class="formcontrol" placeholder="팀 이름"/>
+                </div>
+                <button type="submit" class="btn btn-primary mx-sm-1 mb-2">검색</button>
             </div>
-            <button type="submit" class="btn btn-primary mb-2">검색</button>
         </form>
     </div>
 
     <!-- Table Section -->
     <div>
-        <table class="table table-striped">
+        <style>
+            table {
+                white-space: nowrap;
+                text-align: center;
+            }
+        </style>
+        <table class="table table-responsive-sm table-bordered table-dark">
             <thead>
             <tr>
                 <th>대회명</th>
                 <th>날짜</th>
                 <th>시간</th>
                 <th>팀 A</th>
-                <th></th>
+                <th>진행 상황</th>
                 <th>팀 B</th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="list : ${lists}">
+            <tr th:each="list : ${lists}" style="align-items: center">
                 <td th:text="${list.getTournamentName()}"></td>
                 <td th:text="${list.date} + ' (' + ${#calendars.dayOfWeekName(list.date)} + ') '"></td>
                 <td th:text="${#dates.format(list.time, 'HH:mm')}"></td>
                 <td th:text="${list.firstTeamName}"></td>
 
-                <td th:if="${list.status} == '종료'" th:text="${list.firstTeamScore} + ' : ' + ${list.secondTeamScore}"></td>
-                <td th:if="${list.status} == '진행중'" th:text="vs"></td>
+                <td th:if="${list.status} == 'end'"
+                    th:text="${list.firstTeamScore} + ' : ' + ${list.secondTeamScore}"></td>
+                <td th:if="${list.status} == 'ing'" th:text="vs"></td>
 
                 <td th:text="${list.secondTeamName}"></td>
             </tr>
