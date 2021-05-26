@@ -26,9 +26,9 @@ public class TeamMatchRepositoryImpl extends QuerydslRepositorySupport implement
     public List<TeamMatchDto> findAllTeamMatchSearch(TeamMatchSearch teamMatchSearch)
     {
         return jpaQueryFactory.select(Projections.constructor(TeamMatchDto.class,
-                teamMatch.match.tournament.name, teamMatch.date, teamMatch.time, teamMatch.match.firstTeamName,
-                teamMatch.match.firstTeamScore, teamMatch.match.secondTeamScore, teamMatch.match.secondTeamName,
-                teamMatch.match.status, teamMatch.match.winTeam))
+                teamMatch.match.tournament.name, teamMatch.date, teamMatch.time, teamMatch.place,
+                teamMatch.match.firstTeamName, teamMatch.match.firstTeamScore, teamMatch.match.secondTeamScore,
+                teamMatch.match.secondTeamName, teamMatch.match.status, teamMatch.match.winTeam))
                 .distinct()
                 .from(teamMatch)
                 .innerJoin(teamMatch.match)

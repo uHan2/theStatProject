@@ -26,4 +26,6 @@ public class TeamMatch
     private Date date;
 
     private Time time;
+
+    private String place;
 }

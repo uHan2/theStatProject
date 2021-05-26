@@ -15,6 +15,8 @@ public class TeamMatchDto
 
     private Time time;
 
+    private String place;
+
     private String firstTeamName;
 
     private int firstTeamScore;
@@ -29,11 +31,12 @@ public class TeamMatchDto
 
     @QueryProjection
 
-    public TeamMatchDto(String tournamentName, Date date, Time time, String firstTeamName, int firstTeamScore, int secondTeamScore, String secondTeamName, String status, String winTeam)
+    public TeamMatchDto(String tournamentName, Date date, Time time, String place, String firstTeamName, int firstTeamScore, int secondTeamScore, String secondTeamName, String status, String winTeam)
     {
         this.tournamentName = tournamentName;
         this.date = date;
         this.time = time;
+        this.place = place;
         this.firstTeamName = firstTeamName;
         this.firstTeamScore = firstTeamScore;
         this.secondTeamScore = secondTeamScore;

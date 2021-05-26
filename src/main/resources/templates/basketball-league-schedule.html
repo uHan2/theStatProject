@@ -80,6 +80,7 @@
                 <th>대회명</th>
                 <th>날짜</th>
                 <th>시간</th>
+                <th>장소</th>
                 <th>팀 A</th>
                 <th>진행 상황</th>
                 <th>팀 B</th>
@@ -90,6 +91,8 @@
                 <td th:text="${list.getTournamentName()}"></td>
                 <td th:text="${list.date} + ' (' + ${#calendars.dayOfWeekName(list.date)} + ') '"></td>
                 <td th:text="${#dates.format(list.time, 'HH:mm')}"></td>
+                <td th:text="${list.place}"></td>
+
                 <td th:text="${list.firstTeamName}"></td>
 
                 <td th:if="${list.status} == 'end'"
