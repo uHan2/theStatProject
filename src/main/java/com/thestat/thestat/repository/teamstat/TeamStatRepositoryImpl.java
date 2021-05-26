@@ -46,6 +46,6 @@ public class TeamStatRepositoryImpl extends QuerydslRepositorySupport implements
 
     private BooleanExpression teamNameEq(String teamName)
     {
-        return teamName == null ? null : teamStat.team.name.eq(teamName);
+        return teamName == null ? null : teamStat.team.name.like("%" + teamName + "%");
     }
 }

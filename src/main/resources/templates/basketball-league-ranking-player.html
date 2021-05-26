@@ -52,7 +52,6 @@
             </div>
             <div class="form-group mx-sm-1 mb-2">
                 <select th:field="*{tournamentName}" class="form-control">
-                    <!--                    <option value='null'>전체</option>-->
                     <option value="임시대회A">임시대회A</option>
                     <option value="임시대회B">임시대회B</option>
                     <option value="임시대회C">임시대회C</option>
@@ -60,7 +59,7 @@
             </div>
             <div class="form-group mx-sm-1 mb-2">
                 <select th:field="*{teamName}" class="form-control">
-                    <!--                    <option value='null'>전체</option>-->
+                    <option value="%%">전체</option>
                     <option value="북산">북산</option>
                     <option value="고글">고글</option>
                 </select>
@@ -73,7 +72,7 @@
     </div>
 
     <!-- Table Section -->
-    <div>
+    <div th:if="${lists.size() != 0}">
         <style>
             table {
                 white-space: nowrap;
@@ -97,7 +96,6 @@
             </thead>
             <tbody>
             <tr th:each="list : ${lists}">
-                <!--                <td th:text="${list.player.name} + ' (' + ${list.player.team.name} + ')'"></td>-->
                 <td th:text="${list.playerName + ' (' + list.teamName} + ')'"></td>
                 <td th:text="${list.gamesPlayed}"></td>
                 <td th:text="${#numbers.formatDecimal((list.totalPointMade * 1.0 / list.gamesPlayed), 1, 2)}"></td>
@@ -111,6 +109,9 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div th:if="${lists.size() == 0}">
+        <p style="text-align: center; font-weight: bold; font-size: 1.8em;"> 데이터가 존재하지 않습니다. <br> 검색조건을 다시 확인해주세요. </p>
     </div>
     <!-- /.row -->
 
