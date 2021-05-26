@@ -92,7 +92,7 @@ public class PlayerStatRepositoryImpl extends QuerydslRepositorySupport implemen
 
     private BooleanExpression teamNameEq(String teamName)
     {
-        return teamName == null ? null : playerStat.player.team.name.eq(teamName);
+        return teamName == null ? null : playerStat.player.team.name.like(teamName);
     }
 
     private BooleanExpression playerNameLike(String playerName)
