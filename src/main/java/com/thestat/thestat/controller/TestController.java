@@ -20,14 +20,14 @@ public class TestController
     private final PlayerService playerService;
 
     @GetMapping("/api/v1/{teamId}/player")
-    public Result membersV2(@PathVariable Long teamId)
+    public Result<List<PlayerDto>> membersV2(@PathVariable Long teamId)
     {
         List<Player> findPlayers = playerService.findPlayersByTeamId(teamId);
         List<PlayerDto> collect = findPlayers.stream()
                 .map(p -> new PlayerDto(p.getTeam().getId(), p.getTeam().getName(), p.getId(), p.getName()))
                 .collect(Collectors.toList());
 
-        return new Result(collect);
+        return new Result<>(collect);
     }
 
     @Getter
