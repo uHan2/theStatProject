@@ -1,12 +1,11 @@
 package com.thestat.thestat.controller;
 
 import com.thestat.thestat.domain.Player;
-import com.thestat.thestat.domain.Team;
 import com.thestat.thestat.service.PlayerService;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import lombok.Setter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,14 +30,15 @@ public class TestController
         return new Result(collect);
     }
 
-    @Data
+    @Getter
     @AllArgsConstructor
     static class Result<T>
     {
-        private T data;
+        private final T data;
     }
 
-    @Data
+    @Getter
+    @Setter
     @AllArgsConstructor
     static class PlayerDto
     {
