@@ -1,11 +1,13 @@
 package com.thestat.thestat.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Tournament
 {
     @Id
@@ -18,4 +20,11 @@ public class Tournament
     private String hostUniversity;
 
     private int year;
+
+    public Tournament(String name, String hostUniversity, int year)
+    {
+        this.name = name;
+        this.hostUniversity = hostUniversity;
+        this.year = year;
+    }
 }

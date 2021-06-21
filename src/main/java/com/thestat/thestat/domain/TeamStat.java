@@ -56,4 +56,25 @@ public class TeamStat
     private int gamesPlayed;
 
     private int totalPointMade;
+
+    public TeamStat(Team team, Match match, Tournament tournament, int twoPointMade, double twoPointTry, int threePointMade, double threePointTry, int freeThrowMade, double freeThrowTry, int assist, int steal, int block, int rebound, int win, int lose, int gamesPlayed, int totalPointMade)
+    {
+        this.team = team;
+        this.match = match;
+        this.tournament = tournament;
+        this.twoPointMade = twoPointMade;
+        this.twoPointTry = twoPointTry;
+        this.threePointMade = threePointMade;
+        this.threePointTry = threePointTry;
+        this.freeThrowMade = freeThrowMade;
+        this.freeThrowTry = freeThrowTry;
+        this.assist = assist;
+        this.steal = steal;
+        this.block = block;
+        this.rebound = rebound;
+        this.win = win;
+        this.lose = lose;
+        this.gamesPlayed = gamesPlayed;
+        this.totalPointMade = totalPointMade;
+    }
 }
